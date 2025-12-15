@@ -58,3 +58,118 @@ Categorical features are handled using **One-Hot Encoding**, and all preprocessi
   - RandomForestClassifier for prediction
 
 The trained model is saved as:
+models/model.pkl
+
+
+---
+
+## 🧠 Machine Learning Pipeline
+
+The pipeline includes:
+1. Missing value handling
+2. Feature encoding
+3. Model training
+4. Validation
+5. Model serialization
+
+--
+
+## 🌐 API (FastAPI)
+
+The trained model is served using FastAPI.
+
+Run the API
+uvicorn app.main:app --reload
+
+API Endpoints
+
+GET /
+Health check
+
+POST /predict
+Predict passenger survival
+
+Example Request
+{
+  "Pclass": 3,
+  "Sex": "male",
+  "Age": 22,
+  "SibSp": 1,
+  "Parch": 0,
+  "Fare": 7.25,
+  "Embarked": "S"
+}
+
+Example Response
+```
+{
+  "input": {
+    "Pclass": 3,
+    "Sex": "male",
+    "Age": 22.0,
+    "SibSp": 1,
+    "Parch": 0,
+    "Fare": 7.25,
+    "Embarked": "S"
+  },
+  "survived": 0,
+  "probability_survived": 0.1033
+}
+```
+
+Swagger UI is available at:
+
+`http://127.0.0.1:8000/docs`
+
+## 📁 Project Structure
+```
+titanic-ml/
+│
+├── app/
+│   └── main.py              # FastAPI app
+│
+├── data/
+│   └── train.csv            # (not included)
+│
+├── models/
+│   └── model.pkl            # trained model
+│
+├── titanic_ml/
+│   ├── __init__.py
+│   └── pipeline.py          # ML pipeline definition
+│
+├── train.py                 # training script
+├── requirements.txt
+└── README.md
+```
+
+## 🧑‍💻 How to Run Locally
+```
+# clone repository
+git clone https://github.com/FerdieF/titanic-ml.git
+cd titanic-ml
+
+# create virtual environment
+python -m venv .venv
+.venv\Scripts\activate   # Windows
+
+# install dependencies
+pip install -r requirements.txt
+
+# train model
+python train.py
+
+# start API
+uvicorn app.main:app --reload
+```
+
+## 📈 Future Improvements
+- Add advanced feature engineering (Title, FamilySize, IsAlone)
+- Model comparison (XGBoost, CatBoost)
+- Dockerization
+- CI/CD pipeline
+- Deployment to cloud platforms (Render, Railway, HuggingFace Spaces)
+
+## 👤 Author
+**FerdieF**
+Machine Learning / AI Engineering Portfolio Project
