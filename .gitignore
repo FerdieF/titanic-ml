@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual env
+.venv/
+venv/
+.virtualenv/
+.virtualenvs/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS / Editor
+.DS_Store
+.vscode/
+
+# Model artifacts
+models/
+*.pkl
+
+# Data (kalau kamu tidak mau upload dataset)
+data/
+*.csv
